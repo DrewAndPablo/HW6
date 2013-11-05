@@ -38,29 +38,44 @@ int main(int argc, const char * argv[])
     char ch;
     int count = 0;
     int lastspace = 0;
+    int wasLine = 0;
     while ( EOF !=(ch = getchar())) {
         if (count >= width && ch == ' ' ) {
             printf("\n");
             count = 0;
+            lastspace = 1;
         }
         if (ch == ' ' && lastspace !=1){
             lastspace = 1;
             putchar(ch);
             count++;
+            wasLine = 0;
         }
         else if (ch == ' ' && lastspace == 1) {
             continue;
         }
         else if (ch == '\n') {
-            continue;
+            if (wasLine == 0) {
+                wasLine = 1;
+                continue;
+            }
+            else if (wasLine == 1) {
+                wasLine = 0;
+                putchar(ch);
+                putchar(ch);
+                count = 0;
+                lastspace = 1;
+            }
         }
         else {
             putchar(ch);
             lastspace = 0;
             count++;
+            wasLine = 0;
         }
         
     }
+    printf("\n");
     return 0;
 }
 
