@@ -28,6 +28,7 @@
 		0744C63018286D5800551307 /* HW6 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = HW6; sourceTree = BUILT_PRODUCTS_DIR; };
 		0744C63318286D5800551307 /* main.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = main.c; sourceTree = "<group>"; };
 		0744C63518286D5800551307 /* HW6.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = HW6.1; sourceTree = "<group>"; };
+		0744C63C18286F9800551307 /* format.5 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = format.5; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +63,7 @@
 			children = (
 				0744C63318286D5800551307 /* main.c */,
 				0744C63518286D5800551307 /* HW6.1 */,
+				0744C63C18286F9800551307 /* format.5 */,
 			);
 			path = HW6;
 			sourceTree = "<group>";

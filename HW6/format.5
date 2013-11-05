@@ -1,0 +1,40 @@
+./" Manual page for the "format" text formatting tool
+./" Drew Gotbaum, Pablo Horth, and Prakash Paudel - Fall 2013
+
+.TH format 5 "November 11, 2013" "CSCI 241" "Oberlin College"
+
+.SH NAME
+.B format
+\- a formatting tool to clean up unneccessary spacing and fix line width.
+
+.SH SYNOPSIS
+.B format
+[OPTION]...
+<filename>
+
+.SH DESCRIPTION
+Properly format each of the paragraphs in the given file to
+clean up line-width, extra spacing, or any of the options found below.
+
+.SH OPTIONS
+.IP "-w linesize"
+Sets the character width of the output lines. Default is set to 72.
+
+.IP "-r"
+Arranges the line on the right side (similar to Hebrew).
+
+.IP "-j"
+Extends and spaces the line to fill the entire line width from left to right.
+
+.IP "-s"
+Compresses consecutive blank lines into one.
+
+
+.SH AUTHOR
+Drew Gotbaum,
+Prakash Paudel,
+and Pablo Horth (Fall 2013)
+
+
+.SH BUGS
+None that we know of.
