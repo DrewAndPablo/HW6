@@ -11,7 +11,7 @@
 #include <string.h>
 
 int width = 72;
-char align = 'L';
+char align = 'l';
 int spacing = 0;
 
 int main(int argc, const char * argv[])
@@ -34,6 +34,32 @@ int main(int argc, const char * argv[])
             printf("Please use only the options from the man page.\n");
             exit(1);
         }
+    }
+    char ch;
+    int count = 0;
+    int lastspace = 0;
+    while ( EOF !=(ch = getchar())) {
+        if (count >= width && ch == ' ' ) {
+            printf("\n");
+            count = 0;
+        }
+        if (ch == ' ' && lastspace !=1){
+            lastspace = 1;
+            putchar(ch);
+            count++;
+        }
+        else if (ch == ' ' && lastspace == 1) {
+            continue;
+        }
+        else if (ch == '\n') {
+            continue;
+        }
+        else {
+            putchar(ch);
+            lastspace = 0;
+            count++;
+        }
+        
     }
     return 0;
 }
