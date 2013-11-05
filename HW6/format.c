@@ -22,7 +22,7 @@ void widthFormatting() {
     int index = 0;
     while ( EOF !=(ch = getchar())) {
         if (count >= width && ch == ' ' ) {
-            printf("\n");
+            //printf("\n");
             str[index]= '\n';
             index++;
             count = 0;
@@ -30,7 +30,7 @@ void widthFormatting() {
         }
         if (ch == ' ' && lastspace !=1){
             lastspace = 1;
-            putchar(ch);
+            //putchar(ch);
             str[index] = ch;
             index++;
             count++;
@@ -46,10 +46,10 @@ void widthFormatting() {
             }
             else if (wasLine == 1) {
                 wasLine = 0;
-                putchar(ch);
+                //putchar(ch);
                 str[index] = ch;
                 index++;
-                putchar(ch);
+                //putchar(ch);
                 str[index] = ch;
                 index++;
                 count = 0;
@@ -57,13 +57,49 @@ void widthFormatting() {
             }
         }
         else {
-            putchar(ch);
+            //putchar(ch);
             str[index] = ch;
             index++;
             lastspace = 0;
             count++;
             wasLine = 0;
         }
+    }
+}
+void sortArray() {
+    int check = 1;
+    int lastspace = 0;
+    for (int i = 0; i < 5000; i++) {
+       
+        if (str[i] == '\0') {
+            break;
+        }
+        if (str[i] == ' ') {
+            lastspace = i;
+        }
+        if (check >= width && str[i] == '\n') {
+            if (check == width +1 ) {
+                printf("%d \n",check);
+                check = 0;
+                printf("spacing: %d\n",check);
+                continue;
+            }
+            else {
+                str[i] = ' ';
+                str[lastspace] = '\n';
+                printf("%d \n",check);
+                check = 0;
+                for (int k = i; k>lastspace ; k--) {
+                    check++;
+                }
+                check = check - 1;
+                printf("spacing: %d\n",check);
+            }
+        }
+        
+        check++;
+        
+        
     }
 }
 int main(int argc, const char * argv[]){
@@ -89,6 +125,7 @@ int main(int argc, const char * argv[]){
     
 
     widthFormatting();
+    sortArray();
     printf("\n");
     for (int i = 0; i < 5000; i++) {
         if (str[i] == '\0') {
