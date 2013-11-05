@@ -69,38 +69,44 @@ void widthFormatting() {
 void sortArray() {
     int check = 1;
     int lastspace = 0;
+    int isLine = 0;
     for (int i = 0; i < 5000; i++) {
-       
         if (str[i] == '\0') {
             break;
+        }
+        if (str[i] == '\n' && isLine == 1) {
+            str[i] = ' ';
+            isLine = 0;
+            continue;
+        }
+        else if (str[i] == '\n' && check<width) {
+            check = 0;
+        }
+        if (check > width) {
+            if (str[i] == '\n' && check == width +1) {
+                check = 1;
+                continue;
+            }
+            else if (str[i] == '\n') {
+                str[lastspace] = '\n';
+                str[i] = ' ';
+                check = i - lastspace -1 ;
+                printf("end of line: %d\n",check );
+            }
+            else if (str[i] == ' ') {
+                str[lastspace] = '\n';
+                isLine = 1;
+                check = i - lastspace -1  ;
+                printf("space: %d\n",check );
+            }
         }
         if (str[i] == ' ') {
             lastspace = i;
         }
-        if (check >= width && str[i] == '\n') {
-            if (check == width +1 ) {
-                printf("%d \n",check);
-                check = 0;
-                printf("spacing: %d\n",check);
-                continue;
-            }
-            else {
-                str[i] = ' ';
-                str[lastspace] = '\n';
-                printf("%d \n",check);
-                check = 0;
-                for (int k = i; k>lastspace ; k--) {
-                    check++;
-                }
-                check = check - 1;
-                printf("spacing: %d\n",check);
-            }
-        }
-        
         check++;
-        
-        
     }
+    
+
 }
 int main(int argc, const char * argv[]){
     for (int i = 1; i < argc ; i++){
