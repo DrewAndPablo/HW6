@@ -13,20 +13,26 @@
 int width = 72;
 char align = 'l';
 int spacing = 0;
+char str[5000];
 void widthFormatting() {
     char ch;
     int count = 0;
     int lastspace = 0;
     int wasLine = 0;
+    int index = 0;
     while ( EOF !=(ch = getchar())) {
         if (count >= width && ch == ' ' ) {
             printf("\n");
+            str[index]= '\n';
+            index++;
             count = 0;
             lastspace = 1;
         }
         if (ch == ' ' && lastspace !=1){
             lastspace = 1;
             putchar(ch);
+            str[index] = ch;
+            index++;
             count++;
             wasLine = 0;
         }
@@ -41,13 +47,19 @@ void widthFormatting() {
             else if (wasLine == 1) {
                 wasLine = 0;
                 putchar(ch);
+                str[index] = ch;
+                index++;
                 putchar(ch);
+                str[index] = ch;
+                index++;
                 count = 0;
                 lastspace = 1;
             }
         }
         else {
             putchar(ch);
+            str[index] = ch;
+            index++;
             lastspace = 0;
             count++;
             wasLine = 0;
@@ -77,6 +89,14 @@ int main(int argc, const char * argv[]){
     
 
     widthFormatting();
+    printf("\n");
+    for (int i = 0; i < 5000; i++) {
+        if (str[i] == '\0') {
+            break;
+        }
+        printf("%c",str[i]);
+    }
+    
     printf("\n");
     return 0;
 }
